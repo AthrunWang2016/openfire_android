@@ -11,8 +11,6 @@ import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.roster.RosterEntry;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
 import com.example.openfireapp.adapter.ChatListAdapter;
 import com.example.openfireapp.db.ChatRosterDAO;
 import com.example.openfireapp.db.PrivateChatMsgDAO;
@@ -47,7 +45,6 @@ public class ChatActivity extends Activity {
 	private EditText ev;
 	
 	private ListView listView01;
-    private MaterialRefreshLayout refresh;
     
     private ChatManager chatmanager = ChatManager.getInstanceFor(TApplication.connection);
     private Chat chat;
@@ -94,10 +91,6 @@ public class ChatActivity extends Activity {
 		tv_back = (TextView) findViewById(R.id.tv_back);
 		ev = (EditText) findViewById(R.id.editText1);
 		listView01 = (ListView) findViewById(R.id.listView01);
-        refresh = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        refresh.setIsOverLay(false);
-        refresh.setWaveShow(false);
-        refresh.setLoadMore(true);
         
 		tv.setText(chatUser);
 		
@@ -107,19 +100,6 @@ public class ChatActivity extends Activity {
 	private void setListener() {
 		
 		tv_back.setOnClickListener(new MyClickListener());
-		
-		refresh.setMaterialRefreshListener(new MaterialRefreshListener() {
-			@Override
-			public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-				//下拉刷新...
-				refresh.finishRefresh();
-			}
-		   @Override
-	       public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-	          //上拉加载更多...
-			   refresh.finishRefreshLoadMore();
-	       }
-		});
 		
 		/*chatmanager.addChatListener(new ChatManagerListener() {
             @Override

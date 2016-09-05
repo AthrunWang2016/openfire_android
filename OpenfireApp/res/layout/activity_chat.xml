@@ -29,23 +29,17 @@
             android:text=""
             android:textSize="20sp" />
     </RelativeLayout>
-    
-    <com.cjj.MaterialRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/border_textview"
-        android:layout_above="@+id/relativeLayout2"
-        android:layout_below="@+id/relativeLayout1" >
 
         <ListView
 		    android:id="@+id/listView01"
 		    android:layout_width="match_parent"
 	    	android:layout_height="match_parent"
+	    	android:background="@drawable/border_textview"
+            android:layout_above="@+id/relativeLayout2"
+            android:layout_below="@+id/relativeLayout1"
 	    	android:divider="@null"
 	    	android:stackFromBottom="true" >
 		</ListView>
-	</com.cjj.MaterialRefreshLayout>
     
     <RelativeLayout
         android:id="@+id/relativeLayout2"
