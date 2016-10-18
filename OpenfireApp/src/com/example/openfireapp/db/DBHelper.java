@@ -17,8 +17,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	/**
 	 * 聊天记录表
-	 * type:0.文字，1.语音，2。图片，3.视频
-	 * king:0.私聊，1.群聊，2，聊天室
+	 * type:0.文字，1.语音，2。图片，3.视频聊天，4.语音聊天
+	 * kind:0.私聊，1.群聊，2，聊天室
 	 */
 	private static String ChatMsgTable = "create table if not exists chatMsgTable ("
 			+ "_id integer primary key autoincrement,"
@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	/**
 	 * 联系人表
-	 * type：0.没有会话，1.有会话
+	 * type：0.没有会话，1.有会话，2.自己
 	 */
 	private static String ChatRosterTable = "create table if not exists chatRosterTable ("
 			+ "_id integer primary key autoincrement,"

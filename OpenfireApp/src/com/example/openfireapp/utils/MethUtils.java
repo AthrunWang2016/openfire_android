@@ -1,5 +1,6 @@
 package com.example.openfireapp.utils;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -19,6 +20,10 @@ public class MethUtils {
     	if(index>0)
     		fromUser=fromUser.substring(0,index);
     	return fromUser;
+	}
+	
+	public static String getAppName(Activity activity){
+		return activity.getApplicationInfo().loadLabel(activity.getPackageManager()).toString();
 	}
 	
 }

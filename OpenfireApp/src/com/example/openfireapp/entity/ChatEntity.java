@@ -1,6 +1,10 @@
 package com.example.openfireapp.entity;
 
-public class ChatEntity {
+import java.io.Serializable;
+
+import com.example.openfireapp.chatutils.ChatUtils;
+
+public class ChatEntity implements Serializable{
 
 	private String from;
 	private String body;
@@ -12,10 +16,10 @@ public class ChatEntity {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ChatEntity(String from, String body) {
-		super();
+	public ChatEntity(String from, String msg) {
 		this.from = from;
-		this.body = body;
+		this.body = ChatUtils.getMsgBody(msg);
+		this.type = ChatUtils.getMsgType(msg);
 	}
 
 	public String getFrom() {

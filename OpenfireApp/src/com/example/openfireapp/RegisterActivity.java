@@ -22,9 +22,9 @@ import android.widget.Toast;
 public class RegisterActivity extends BaseActivity {
 
 	private TextView tv_back;
-	//ÕËºÅ
+	//ï¿½Ëºï¿½
 	private EditText editText1;
-	//ÃÜÂë
+	//ï¿½ï¿½ï¿½ï¿½
 	private EditText editText2;
 	private EditText editText3;
 	
@@ -59,32 +59,32 @@ public class RegisterActivity extends BaseActivity {
 				et2Str = editText2.getText().toString();
 				et3Str = editText3.getText().toString();
 				if(TextUtils.isEmpty(et1Str)||TextUtils.isEmpty(et2Str)||TextUtils.isEmpty(et3Str)){
-					Toast.makeText(this, "ÕË»§»òÃÜÂë²»ÄÜÎª¿Õ", 0).show();
+					Toast.makeText(this, "è¯·å¡«å†™ä¿¡æ¯", 0).show();
 					break;
 				}
 				if(!et2Str.equals(et3Str)){
-					Toast.makeText(this, "Á½¸öÃÜÂë²»Ò»ÖÂ", 0).show();
+					Toast.makeText(this, "ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´", 0).show();
 					break;
 				}
 				try {
 					register();
-					Toast.makeText(this, "×¢²á³É¹¦", 0).show();
+					Toast.makeText(this, "æ³¨å†ŒæˆåŠŸ", 0).show();
 					startActivity(new Intent(this,LoginActivity.class));
 				} catch (NoResponseException e) {
-					Toast.makeText(this, "×¢²áÊ§°Ü", 0).show();
+					Toast.makeText(this, "æ³¨å†Œå¤±è´¥", 0).show();
 					e.printStackTrace();
 				} catch (XMPPErrorException e) {
-					Toast.makeText(this, "×¢²áÊ§°Ü", 0).show();
+					Toast.makeText(this, "æ³¨å†Œå¤±è´¥", 0).show();
 					e.printStackTrace();
 				} catch (NotConnectedException e) {
-					Toast.makeText(this, "×¢²áÊ§°Ü", 0).show();
+					Toast.makeText(this, "æ³¨å†Œå¤±è´¥", 0).show();
 					e.printStackTrace();
 				}
 				break;
 		}
 	}
 	
-	//xmpp×¢²á·½·¨
+	//xmpp×¢ï¿½á·½ï¿½ï¿½
 	private void register() throws NoResponseException, XMPPErrorException, NotConnectedException{
 		AccountManager accountManager = AccountManager.getInstance(TApplication.connection);
 		/*HashMap<String, String> map = new HashMap<String, String>();

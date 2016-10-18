@@ -8,7 +8,9 @@ import org.jivesoftware.smack.SmackException.NotConnectedException;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.XMPPException.XMPPErrorException;
 
+import com.example.openfireapp.db.MyselfInfoDAO;
 import com.example.openfireapp.entity.CurrentUser;
+import com.example.openfireapp.utils.ConUtils;
 import com.example.openfireapp.utils.LogUtils;
 
 import android.app.Activity;
@@ -109,9 +111,15 @@ public class LoginActivity extends BaseActivity {
 		try {
 			TApplication.connection.login(et1Str, et2Str);
 			Toast.makeText(this, "登录成功", 0).show();
-			TApplication.currentUser = new CurrentUser();
+			/*TApplication.currentUser = new CurrentUser();
 		   TApplication.currentUser.setName(et1Str);
-		   TApplication.currentUser.setPassword(et2Str);
+		   TApplication.currentUser.setPassword(et2Str);*/
+			CurrentUser currentUser = new CurrentUser();
+			currentUser.setUser(et1Str+"@"+ConUtils.SERVICENAME);
+			currentUser.setName(et1Str);
+			currentUser.setPassword(et2Str);
+			MyselfInfoDAO.getInstance(this).saveMyInfoMsg(currentUser);
+			
 		   //下次自动登录则通讯录只保存一次
 		   TApplication.saveRoster(this);
 		   

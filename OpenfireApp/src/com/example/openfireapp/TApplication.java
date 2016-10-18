@@ -23,6 +23,7 @@ import org.jivesoftware.smack.packet.Stanza;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
+import com.example.openfireapp.chatutils.ChatUtils;
 import com.example.openfireapp.db.ChatRosterDAO;
 import com.example.openfireapp.db.PrivateChatMsgDAO;
 import com.example.openfireapp.entity.CurrentUser;
@@ -145,7 +146,9 @@ public class TApplication extends Application{
 				    	if(index>0)
 				    		fromUser=fromUser.substring(0,index);*/
 						intent.putExtra("RosterEntry", MethUtils.subUserToName(arg1.getFrom()));
-						//intent.putExtra("chatBody", arg1.getBody());
+						//intent.putExtra("chatBody", ChatUtils.getMsgBody(arg1.getBody()));
+						intent.putExtra("chatBody", arg1.getBody());
+						
 						PrivateChatMsgDAO.getInstance(TApplication.this).savePrivateChatMsg(arg1);
 						sendBroadcast(intent);
 					}

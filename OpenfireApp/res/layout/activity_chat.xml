@@ -30,7 +30,7 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-        <ListView
+        <com.example.openfireapp.widget.MyRefreshListView
 		    android:id="@+id/listView01"
 		    android:layout_width="match_parent"
 	    	android:layout_height="match_parent"
@@ -39,24 +39,39 @@
             android:layout_below="@+id/relativeLayout1"
 	    	android:divider="@null"
 	    	android:stackFromBottom="true" >
-		</ListView>
+		</com.example.openfireapp.widget.MyRefreshListView>
     
+     <LinearLayout
+         android:id="@+id/relativeLayout2"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_alignParentBottom="true" >
+        
     <RelativeLayout
-        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_textview"
-        android:layout_alignParentBottom="true" >
+        android:background="@drawable/border_textview" >
 
         <EditText
             android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/button1" >
+            android:layout_toLeftOf="@+id/tv02" >
 
             <requestFocus />
         </EditText>
 
+        <TextView
+            android:id="@+id/tv02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_toLeftOf="@+id/button1" />
+        
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
@@ -65,5 +80,47 @@
             android:onClick="doClick"
             android:text="send" />
     </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/border_textview"
+        android:padding="10dp"
+        android:focusableInTouchMode="true"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_textview"
+            android:onClick="doClick"
+            android:text="Image" />
+        
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/border_textview"
+            android:onClick="doClick"
+            android:text="Video" />
+        
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/button3"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/border_textview"
+            android:onClick="doClick"
+            android:text="Audeo" />
+        
+    </RelativeLayout>
+    
+    </LinearLayout>
 
 </RelativeLayout>

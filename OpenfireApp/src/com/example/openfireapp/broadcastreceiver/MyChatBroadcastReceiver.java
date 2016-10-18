@@ -35,7 +35,7 @@ public class MyChatBroadcastReceiver extends BroadcastReceiver{
 			
 			Intent intentChatActivity = new Intent(context, ChatActivity.class);
 			intentChatActivity.putExtra("RosterEntry", intent.getStringExtra("RosterEntry"));
-			intentChatActivity.putExtra("chatBody", intent.getStringExtra("chatBody"));
+			//intentChatActivity.putExtra("chatBody", intent.getStringExtra("chatBody"));
 			intentChatActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			
 			PendingIntent contentIntent = PendingIntent.getActivity(context, ConUtils.ChatNotificationId, intentChatActivity, PendingIntent.FLAG_UPDATE_CURRENT); 

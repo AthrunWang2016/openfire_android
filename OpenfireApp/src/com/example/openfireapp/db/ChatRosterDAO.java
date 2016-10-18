@@ -32,7 +32,39 @@ public class ChatRosterDAO extends MyBaseDAO{
 		return instance;
 	}
 	
+	public void saveChatRoster(RosterEntry rosterEntry) {
+		SQLiteDatabase db = dBHelper.getWritableDatabase();
+		ContentValues values =new ContentValues();
+		values.put("user", MethUtils.subUserToName(rosterEntry.getUser()));
+		if(rosterEntry.getName()==null||rosterEntry.getName().equals("")){
+			values.put("name", MethUtils.subUserToName(rosterEntry.getUser()));
+		}else{
+			values.put("name", rosterEntry.getName());
+		}
+		values.put("type", 0);
+		db.insert("chatRosterTable", null, values);
+		db.close();
+	}
+	
 	public void saveChatRoster(List<RosterEntry> list) {
+		LogUtils.log("saveChatRoster", "saveChatRosterList");
+		List<MyRosterEntry> askList = askChatRoster(false);
+		if(askList != null && askList.size() != 0){
+			for(RosterEntry r : list){
+				boolean isHere = false;
+				for(MyRosterEntry mR : askList){
+					if(mR.getName().equals(MethUtils.subUserToName(r.getUser()))){
+						isHere = true;
+						continue;
+					}
+				}
+				if(!isHere){
+					saveChatRoster(r);
+				}
+			}
+			return;
+		}
+		
 		SQLiteDatabase db = dBHelper.getWritableDatabase();
 		LogUtils.log("saveChatRoster", "saveChatRoster:"+list.size());
 		for(int i=0;i<list.size();i++){
@@ -56,7 +88,7 @@ public class ChatRosterDAO extends MyBaseDAO{
 		if(isConversation){
 			sql = "select * from chatRosterTable where type = 1";
 		}else{
-			sql = "select * from chatRosterTable";
+			sql = "select * from chatRosterTable where type != 2";
 		}
 		Cursor c = db.rawQuery(sql, null);
 		List<MyRosterEntry> lists = new ArrayList<MyRosterEntry>();
